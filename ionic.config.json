@@ -1,0 +1,7 @@
+{
+  "name": "hack-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
