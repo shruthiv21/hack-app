@@ -29,3 +29,20 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+section {
+  ul {
+    li {
+      padding: 10px;
+      color: #3880ff;
+    }
+  }
+}
+
+ion-text {
+  text-align: center;
+}
+
+ion-button{
+  --background: #062f77;
+}

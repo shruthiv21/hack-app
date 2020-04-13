@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Edit-profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+
+          <div class="ion-text-center">
+            <h3>Edit your profile</h3>
+          </div>
+
+          <div class="ion-text-center">
+
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Select your birthdate</ion-label>
+              <ion-datetime value="2000-02-19" placeholder="Select your bbirthdate"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-textarea placeholder="Please fill in your address"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="phone" type="text" placeholder="Phone Number" ngModel required></ion-input> 
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Current password" ngModel required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="New password" ngModel required></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="ion-text-center">
+            <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

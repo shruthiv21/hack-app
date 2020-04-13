@@ -1,20 +1,76 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title class="ion-text-center">
+      Telemedicine
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" padding>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large" class="ion-text-center">Telemedicine</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-text color="primary">
+    <p> Telemedicine refers to the practice of caring patients remotely when the provider
+      and patients are not physically present with each other.
+      It allows the patients in remote locations to access medical expertise quickly without travel.
+    </p>
+  </ion-text>
+
+  <ion-list>
+    <ion-list-header color="secondary">
+      Some features of Telemedicine
+    </ion-list-header>
+  </ion-list>
+
+  <section>
+    <ul>
+      <li>Appointment scheduling</li>
+      <li>Video conferencing</li>
+      <li>Remote treatment plans</li>
+      <li>Chats/messaging</li>
+      <li>Billing</li>
+      <li>Online forms</li>
+    </ul>
+  </section>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+
+          <div class="ion-text-center">
+            <h3>Sign In</h3>
+          </div>
+
+          <div class="ion-text-center">
+
+            <ion-item>
+              <ion-input name="username" type="text" placeholder="Username" [(ngModel)]="username" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="password" ngModel required></ion-input>
+            </ion-item>
+
+          </div>
+
+          <div>
+            <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-center">
+        <div class="ion-text-center">
+          If you don't have an account, please <a routerLink="/register">register</a> here!
+        </div>
+      </ion-row>
+
+    </ion-grid>
+  </form>
 </ion-content>
