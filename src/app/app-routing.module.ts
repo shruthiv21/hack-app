@@ -17,9 +17,13 @@ const routes: Routes = [
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
   {
-    path: 'schedule-appointment',
-    loadChildren: () => import('./schedule-appointment/schedule-appointment.module').then( m => m.ScheduleAppointmentPageModule)
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
+  {
+    path: 'chat-bot',
+    loadChildren: () => import('./chat-bot/chat-bot.module').then( m => m.ChatBotPageModule)
+  }
 ];
 
 @NgModule({

@@ -22,8 +22,10 @@
     </ion-header>
     <ion-content>
       <ion-list>
+        <ion-item button (click)="back()">Back</ion-item>
         <ion-item button (click)="editProfile()">Edit profile</ion-item>
         <ion-item button (click)="feedback()">Feedback</ion-item>
+        <ion-item button (click)="chat()">Self health check</ion-item>
         <ion-item button (click)="help()">Help</ion-item>
         <ion-item button (click)="settings">Settings</ion-item>
         <ion-item button (click)="signOut()">Sign out</ion-item>
@@ -31,7 +33,7 @@
     </ion-content>
   </ion-menu>
 
-  <ion-tabs>
+  <!-- <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule">
         <ion-label>New appointment</ion-label>
@@ -48,8 +50,7 @@
         <ion-icon name="medkit"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>
-  </ion-tabs>
-
+  </ion-tabs> -->
 </ion-content>
 
 <ion-router-outlet id="main"></ion-router-outlet>

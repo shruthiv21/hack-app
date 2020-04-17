@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat-bot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-input name="question" type="text" [(ngModel)]="question"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="ask(question)">
+    Ask
+  </ion-button>
+
+  <div>
+    {{answer}}
+  </div>
+
+</ion-content>

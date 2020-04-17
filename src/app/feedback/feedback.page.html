@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">App Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+
+  <ion-text color="primary" class="ion-text-center">
+    <p>Your opinion is important to us. This way we can improve our app</p>
+  </ion-text>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+
+          <ion-item>
+            <ion-label>
+              How would you rate our app?
+            </ion-label>
+            <ion-select>
+              <ion-select-option value="1">1 - Worst</ion-select-option>
+              <ion-select-option value="2">2 - Fair</ion-select-option>
+              <ion-select-option value="3">3 - Good</ion-select-option>
+              <ion-select-option value="4">4 - Very Good</ion-select-option>
+              <ion-select-option value="5">5 - Excellent</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              Which of the issues did you face while using the app?
+            </ion-label>
+            <ion-select>
+              <ion-select-option value="bugs">Experienced bugs</ion-select-option>
+              <ion-select-option value="confusing">App was confusing</ion-select-option>
+              <ion-select-option value="features">Missing features</ion-select-option>
+              <ion-select-option value="crashed">App crashed</ion-select-option>
+              <ion-select-option value="others" id="others">Others</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              Where you able to find what you needed?
+            </ion-label>
+            <ion-select>
+              <ion-select-option value="yes">Yes</ion-select-option>
+              <ion-select-option value="no">No</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              How satisfied are you with the Doctor's knowledge and kindness?
+            </ion-label>
+            <ion-select>
+              <ion-select-option value="verySatisfied">Very Satisfied</ion-select-option>
+              <ion-select-option value="satisfied">Satisfied</ion-select-option>
+              <ion-select-option value="neutral">Neutral</ion-select-option>
+              <ion-select-option value="unsatisfied">Unsatisfied</ion-select-option>
+              <ion-select-option value="veryUnsatisfied">Very Unsatisfied</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              Did you feel that staff respected your privacy and dignity?
+            </ion-label>
+            <ion-select>
+              <ion-select-option>Excellent</ion-select-option>
+              <ion-select-option>Satisfactory</ion-select-option>
+              <ion-select-option>Poor</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              How would you rate our self health check facility?
+            </ion-label>
+            <ion-select>
+              <ion-select-option>Excellent</ion-select-option>
+              <ion-select-option>Satisfactory</ion-select-option>
+              <ion-select-option>Poor</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              How would you rate our video conferencing facility during appointment?
+            </ion-label>
+            <ion-select>
+              <ion-select-option>Excellent</ion-select-option>
+              <ion-select-option>Satisfactory</ion-select-option>
+              <ion-select-option>Poor</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              How would you rate overall treatment experience using our app?
+            </ion-label>
+            <ion-select>
+              <ion-select-option>Poor</ion-select-option>
+              <ion-select-option>Fair</ion-select-option>
+              <ion-select-option>Good</ion-select-option>
+              <ion-select-option>Excellent</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <div>
+            <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
