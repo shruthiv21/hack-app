@@ -39,6 +39,6 @@ export class DashboardPage implements OnInit {
   }
 
   public chat() {
-    this.router.navigate(['/chat-bot']); 
+    this.router.navigate(['/chat-bot']);
   }
 }

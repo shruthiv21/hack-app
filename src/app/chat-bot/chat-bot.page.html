@@ -5,17 +5,19 @@
 </ion-header>
 
 <ion-content>
-
+  <ng-container *ngFor="let message of messages | async">
+    <!-- <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+      'to': message.sentBy === 'user' }">
+      {{ message.content }}
+    </div> -->
+    <div class="message" [class.from]="message.sentBy === 'bot'" [class.to]="message.sentBy === 'user'">
+      {{ message.content }}
+    </div>
+  </ng-container>
+     
   <ion-item>
-    <ion-input name="question" type="text" [(ngModel)]="question"></ion-input>
+    <ion-label>Your Message</ion-label>
+    <ion-input [(ngModel)]="formValue" (keyup.enter)="sendMessages()" type="text"></ion-input>
   </ion-item>
-
-  <ion-button (click)="ask(question)">
-    Ask
-  </ion-button>
-
-  <div>
-    {{answer}}
-  </div>
-
+  <ion-button (click)="sendMessages()">Send</ion-button>
 </ion-content>

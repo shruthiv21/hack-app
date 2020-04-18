@@ -1,8 +1,8 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { scan } from 'rxjs/operators';
 
-import { Platform } from '@ionic/angular';
-
-declare var ApiAIPromises: any;
+import { ChatBotService, Message } from './chat-bot.service';
 
 @Component({
   selector: 'app-chat-bot',
@@ -11,27 +11,20 @@ declare var ApiAIPromises: any;
 })
 export class ChatBotPage implements OnInit {
 
-  answer;
+  messages: Observable<Message[]>;
 
-  constructor(public platform: Platform, public ngZone: NgZone) {
-    platform.ready().then(() => {
-      ApiAIPromises.init({
-        clientAccessToken: 'c6c5ad1084d64699a8b202f8eb355b51'
-      }).then(result => console.log(result));
-    });
-  }
+  formValue: string;
+
+  constructor(public chatBotService: ChatBotService) { }
 
   ngOnInit() {
+    this.messages = this.chatBotService.conversation.asObservable().pipe(
+      scan((acc, val) => acc.concat(val))
+    );
   }
 
-  public ask(question) {
-    ApiAIPromises.requestText({
-      query: question
-    })
-    .then(({result: {fulfillment: {speech}}}) => {
-       this.ngZone.run(() => {
-         this.answer = speech;
-       });
-    });
+  public sendMessages() {
+    this.chatBotService.converse(this.formValue);
+    this.formValue = '';
   }
 }

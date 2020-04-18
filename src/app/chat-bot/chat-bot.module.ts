@@ -8,6 +8,8 @@ import { ChatBotPageRoutingModule } from './chat-bot-routing.module';
 
 import { ChatBotPage } from './chat-bot.page';
 
+import { ChatBotService } from './chat-bot.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { ChatBotPage } from './chat-bot.page';
     IonicModule,
     ChatBotPageRoutingModule
   ],
-  declarations: [ChatBotPage]
+  declarations: [ChatBotPage],
+  providers: [ChatBotService]
 })
 export class ChatBotPageModule {}
