@@ -7,13 +7,12 @@ import { ApiAiClient } from 'api-ai-javascript/es6/ApiAiClient';
 import { BehaviorSubject } from 'rxjs';
 
 // Message class for displaying messages in the component
-
 export class Message {
   constructor(public content: string, public sentBy: string) {}
 }
 
 @Injectable()
-export class ChatBotService {
+export class SelfHealthCheckService {
 
   readonly token = environment.dialogflow.ionicBot;
 
@@ -26,7 +25,6 @@ export class ChatBotService {
   constructor() {}
 
   // Sends and receives messages via DialogFlow
-
   public converse(msg: string) {
     const userMessage = new Message(msg, 'user');
     this.update(userMessage);
@@ -42,4 +40,5 @@ export class ChatBotService {
   public update(msg: Message) {
     this.conversation.next([msg]);
   }
+
 }

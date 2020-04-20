@@ -1,15 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>chat-bot</ion-title>
+    <ion-title>self-health-check</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ng-container *ngFor="let message of messages | async">
-    <!-- <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
-      'to': message.sentBy === 'user' }">
-      {{ message.content }}
-    </div> -->
     <div class="message" [class.from]="message.sentBy === 'bot'" [class.to]="message.sentBy === 'user'">
       {{ message.content }}
     </div>

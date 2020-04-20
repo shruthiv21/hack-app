@@ -9,10 +9,6 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'dashboard/:username',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },
-  {
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
@@ -21,8 +17,16 @@ const routes: Routes = [
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
   {
-    path: 'chat-bot',
-    loadChildren: () => import('./chat-bot/chat-bot.module').then( m => m.ChatBotPageModule)
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'self-health-check',
+    loadChildren: () => import('./self-health-check/self-health-check.module').then( m => m.SelfHealthCheckPageModule)
   }
 ];
 

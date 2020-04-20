@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.page.html',
-  styleUrls: ['./dashboard.page.scss'],
+  selector: 'app-dashboard1',
+  templateUrl: './dashboard1.page.html',
+  styleUrls: ['./dashboard1.page.scss'],
 })
 export class DashboardPage implements OnInit {
 
@@ -15,30 +14,12 @@ export class DashboardPage implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private menu: MenuController) {
-  }
+    private route: ActivatedRoute) { }
 
-  public  ngOnInit() {
+  ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.username = params.username;
     });
   }
 
-  public back() {
-    this.router.navigate(['/home']);
-  }
-
-  public editProfile() {
-    console.log('Edit profile');
-    this.router.navigate(['/edit-profile']);
-  }
-
-  public feedback() {
-    this.router.navigate(['/feedback']);
-  }
-
-  public chat() {
-    this.router.navigate(['/chat-bot']);
-  }
 }

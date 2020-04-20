@@ -15,8 +15,14 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  // public onSubmit(form) {
+  //   this.username = form.value.username;
+  //   this.router.navigate(['dashboard', this.username]);
+  // }
+
   public onSubmit(form) {
     this.username = form.value.username;
-    this.router.navigate(['dashboard', this.username]);
+    // this.router.navigate(['tabs', this.username]);
+    this.router.navigate(['/tabs']);
   }
 }
