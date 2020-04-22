@@ -1,1 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+  <ion-avatar class="ion-margin-top">
+    <img src="../../assets/images/avatar.svg">
+  </ion-avatar>
+  <ion-label color="primary" class="username">Welcome {{ username }}! </ion-label>
+
+  <ion-menu side="start" menuId="main" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item button (click)="back()">Back</ion-item>
+        <ion-item button (click)="editProfile()">Edit profile</ion-item>
+        <ion-item button (click)="feedback()">Feedback</ion-item>
+        <ion-item button (click)="help()">Help</ion-item>
+        <ion-item button (click)="settings">Settings</ion-item>
+        <ion-item button (click)="signOut()">Sign out</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>   
+</ion-content>
+  
+<ion-router-outlet id="main"></ion-router-outlet>
+  

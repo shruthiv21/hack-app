@@ -1,9 +1,55 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>schedule</ion-title>
+    <ion-title>
+      Schedule an appointment
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
 
+            <ion-item>  
+              <ion-label>Select the hospital</ion-label>
+              <ion-select [(ngModel)]="isType" (ionChange)="nearbyPlace()" name="isType">
+                <ion-select-option value="hospital">Hospital</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Select the Doctor</ion-label>
+              <ion-select [(ngModel)]="isType" (ionChange)="nearbyPlace()" name="isType">
+                <ion-select-option value="doctor">Doctor</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Select your day for an appointment</ion-label>
+              <ion-datetime value="2020-04-22" placeholder="Select your day for an appointment"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Select your time</ion-label>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+            </ion-item>
+
+            <div #map id="map"></div>
+          </div>
+
+          <div class="ion-text-center">
+            <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
+          </div>
+
+          <div class="ion-text-center">
+            <ion-button size="large" type="cancel" (click)="cancel()" expand="block" color="light">Cancel</ion-button>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

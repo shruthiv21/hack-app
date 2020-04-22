@@ -15,5 +15,7 @@
     <ion-label>Your Message</ion-label>
     <ion-input [(ngModel)]="formValue" (keyup.enter)="sendMessages()" type="text"></ion-input>
   </ion-item>
+  
   <ion-button (click)="sendMessages()">Send</ion-button>
+  <ion-button (click)="cancel()" color="light">Cancel</ion-button>
 </ion-content>

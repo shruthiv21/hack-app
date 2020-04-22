@@ -13,4 +13,8 @@ export class EditProfilePage implements OnInit {
 
   ngOnInit() {
   }
+
+  public cancel() {
+    this.router.navigate(['/tabs/dashboard']);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { scan } from 'rxjs/operators';
 
@@ -15,7 +16,9 @@ export class SelfHealthCheckPage implements OnInit {
 
   formValue: string;
 
-  constructor(public selfHealthCheckService: SelfHealthCheckService) { }
+  constructor(
+    public selfHealthCheckService: SelfHealthCheckService,
+    public router: Router) { }
 
   ngOnInit() {
     this.messages = this.selfHealthCheckService.conversation.asObservable().pipe(
@@ -28,4 +31,7 @@ export class SelfHealthCheckPage implements OnInit {
     this.formValue = '';
   }
 
+  public cancel() {
+    this.router.navigate(['/tabs/dashboard']);
+  }
 }

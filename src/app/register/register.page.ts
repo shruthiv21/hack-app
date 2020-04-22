@@ -23,6 +23,10 @@ export class RegisterPage implements OnInit {
   public onSubmit(form) {
     this.username = form.value.username;
     // this.router.navigate(['tabs', this.username]);
-    this.router.navigate(['/tabs']);
+    // this.router.navigate(['/tabs/dashboard']);
+  }
+
+  public cancel() {
+    this.router.navigate(['/home']);
   }
 }

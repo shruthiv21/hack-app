@@ -22,4 +22,21 @@ export class DashboardPage implements OnInit {
     });
   }
 
+  public back() {
+    this.router.navigate(['/home']);
+  }
+
+  public editProfile() {
+    console.log('Edit profile');
+    this.router.navigate(['/edit-profile']);
+  }
+
+  public feedback() {
+    this.router.navigate(['/feedback']);
+  }
+
+  public signOut() {
+    this.router.navigate(['/home']);
+  }
+
 }

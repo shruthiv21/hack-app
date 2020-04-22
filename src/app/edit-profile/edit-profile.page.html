@@ -16,10 +16,6 @@
         <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
 
           <div class="ion-text-center">
-            <h3>Edit your profile</h3>
-          </div>
-
-          <div class="ion-text-center">
 
             <ion-item>
               <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
@@ -51,6 +47,9 @@
             <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
           </div>
 
+          <div class="ion-text-center">
+            <ion-button size="large" type="cancel" (click)="cancel()" expand="block" color="light">Cancel</ion-button>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
