@@ -27,6 +27,8 @@ export class SchedulePage {
 
   public isType: any = '';
 
+  public placeList: any = [];
+
   constructor(
     private ngZone: NgZone,
     private geolocation: Geolocation,
@@ -49,7 +51,6 @@ export class SchedulePage {
     }, (err) => {
       console.log('err ' + err);
     });
-
   }
 
   public nearbyPlace() {
@@ -75,6 +76,8 @@ export class SchedulePage {
 
   public createMarker(place) {
     const placeLoc = place;
+    this.placeList.push(placeLoc);
+    console.log(this.placeList);
     console.log('placeLoc', placeLoc);
     this.markers = new google.maps.Marker({
         map: this.map,

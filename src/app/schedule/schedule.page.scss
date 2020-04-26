@@ -1,11 +1,15 @@
-// ion-content {
-//   div {
-//     #map {
-//       height: 500px;
-//       width: 500px;
-//     }
-//   }
-// }
+ion-toolbar {
+
+  ion-title {
+    display: inline-block;
+    line-height: 50px;
+  }
+
+  img {
+    float: right;
+  }
+}
+
 ion-item {
   margin-top: 50px;
 }

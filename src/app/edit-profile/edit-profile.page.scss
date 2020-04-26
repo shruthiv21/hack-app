@@ -12,3 +12,15 @@ ion-item {
 div.ion-text-center {
   margin-top: 20px;
 }
+
+ion-toolbar {
+
+  ion-title {
+    display: inline-block;
+    line-height: 50px;
+  }
+
+  img {
+    float: right;
+  }
+}

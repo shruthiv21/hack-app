@@ -29,6 +29,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'history',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../history/history.module').then(m => m.HistoryPageModule)
+          }
+        ]
+      },
+      {
         path: 'self-health-check',
         children: [
           {

@@ -4,32 +4,64 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
+    <img src="../../assets/images/app_img_1.png" width="50px" height="50px">
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-avatar class="ion-margin-top">
-    <img src="../../assets/images/avatar.svg">
-  </ion-avatar>
-  <ion-label color="primary" class="username">Welcome {{ username }}! </ion-label>
+<ion-menu side="start" menuId="main" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="back()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        <ion-label>Back</ion-label>
+      </ion-item>
+      <ion-item button (click)="editProfile()">
+        <ion-icon name="create-outline"></ion-icon>
+        <ion-label>Edit profile</ion-label>
+      </ion-item>
+      <ion-item button (click)="feedback()">
+        <ion-icon name="clipboard-outline"></ion-icon>
+        <ion-label>Feedback</ion-label>
+      </ion-item>
+      <ion-item button (click)="help()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <ion-label>Help</ion-label>
+      </ion-item>
+      <ion-item button (click)="settings()">
+        <ion-icon name="settings-outline"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-item>
+      <ion-item button (click)="signOut()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-label>Sign out</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <ion-menu side="start" menuId="main" contentId="main">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item button (click)="back()">Back</ion-item>
-        <ion-item button (click)="editProfile()">Edit profile</ion-item>
-        <ion-item button (click)="feedback()">Feedback</ion-item>
-        <ion-item button (click)="help()">Help</ion-item>
-        <ion-item button (click)="settings">Settings</ion-item>
-        <ion-item button (click)="signOut()">Sign out</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>   
+<ion-content class="background">
+  <ion-text color="primary" class="ion-text-start">
+    <p>COVID-19 cases in India</p>
+  </ion-text>
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">STATE NAMES</ion-col>
+      <ion-col size="3">CONFIRMED</ion-col>
+      <ion-col size="3">RECOVERED</ion-col>
+      <ion-col size="3">DECEASED</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let s of newData" class="ion-justify-content-center">
+      <ion-col size="3">{{ s.state }}</ion-col>
+      <ion-col size="3">{{ s.confirmedCases }}</ion-col>
+      <ion-col size="3">{{ s.recoveredCases }}</ion-col>
+      <ion-col size="3">{{ s.deceasedCases }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
   
 <ion-router-outlet id="main"></ion-router-outlet>

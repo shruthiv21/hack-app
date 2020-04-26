@@ -46,3 +46,18 @@ ion-text {
 ion-button{
   --background: #062f77;
 }
+
+ion-toolbar {
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+ion-content {
+  form {
+    position: relative;
+    bottom: 50px;
+  }
+}

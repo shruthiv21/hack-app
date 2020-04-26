@@ -1,11 +1,58 @@
-ion-label.username {
-  font-size: 1.5em;
-  position: relative;
-  left: 100px;
-  bottom: 40px;
+ion-toolbar {
+
+  ion-title {
+    display: inline-block;
+    line-height: 50px;
+  }
+
+  img {
+    float: right;
+  }
 }
   
 ion-avatar {
   position: relative;
   top: 10px;
+}
+
+ion-content {
+  #map {
+    height: 50%;
+  }
+
+  ion-text {
+    p {
+      margin-left: 15px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+}
+
+ion-menu {
+  z-index: 10000;
+  ion-label {
+    margin-left: 10px;
+  }
+}
+
+ion-grid, ion-row, ion-col {
+  border: .01em solid black;
+}
+
+ion-row {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+ion-grid {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+ion-content.background{
+  --background: url(../../assets/images/india.png) 0 0/100% 100% no-repeat;
 }

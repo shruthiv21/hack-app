@@ -21,4 +21,15 @@ ion-content {
     margin-right: 100px;
   }
 }
-  
+
+ion-toolbar {
+
+  ion-title {
+    display: inline-block;
+    line-height: 50px;
+  }
+
+  img {
+    float: right;
+  }
+}
