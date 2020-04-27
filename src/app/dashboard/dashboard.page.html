@@ -46,7 +46,9 @@
 
 <ion-content class="background">
   <ion-text color="primary" class="ion-text-start">
-    <p>COVID-19 cases in India</p>
+    <p class="description">COVID-19 cases in India</p>
+    <p class="date">Date: {{ today | date: 'dd/mm/yy' }}</p>
+    <p class="time">Time: {{ today | date: 'HH:mm' }}</p>
   </ion-text>
   <ion-grid class="ion-padding">
     <ion-row class="ion-justify-content-center">

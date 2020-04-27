@@ -6,5 +6,8 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-text>
+    <p class="date">Date: {{ today | date: 'dd/mm/yy' }}</p>
+    <p class="time">Time: {{ today | date: 'HH:mm' }}</p>
+  </ion-text>
 </ion-content>

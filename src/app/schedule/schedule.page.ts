@@ -29,6 +29,8 @@ export class SchedulePage {
 
   public placeList: any = [];
 
+  public today = new Date();
+
   constructor(
     private ngZone: NgZone,
     private geolocation: Geolocation,

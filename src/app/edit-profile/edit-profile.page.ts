@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class EditProfilePage implements OnInit {
 
+  public today = new Date();
+
   constructor(
     private router: Router) { }
 

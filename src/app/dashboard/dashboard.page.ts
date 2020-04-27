@@ -50,6 +50,8 @@ export class DashboardPage implements OnInit {
 
   public data: any;
 
+  public today = new Date();
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,

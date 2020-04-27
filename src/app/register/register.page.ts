@@ -10,6 +10,8 @@ export class RegisterPage implements OnInit {
 
   public username: string;
 
+  public today = new Date();
+
   constructor(private router: Router) { }
 
   ngOnInit() {

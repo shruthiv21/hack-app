@@ -6,6 +6,10 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-text>
+    <p class="date">Date: {{ today | date: 'dd/mm/yy' }}</p>
+    <p class="time">Time: {{ today | date: 'HH:mm' }}</p>
+  </ion-text>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-grid>
       <ion-row class="ion-justify-content-center">

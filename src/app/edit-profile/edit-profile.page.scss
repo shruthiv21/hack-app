@@ -24,3 +24,20 @@ ion-toolbar {
     float: right;
   }
 }
+
+ion-content {
+  ion-text {
+    p.date, p.time {
+      position: relative;
+      left: 260px;
+    }
+    p.time {
+      bottom: 10px;
+    }
+  }
+
+  form {
+    position: relative;
+    bottom: 50px;
+  }
+}

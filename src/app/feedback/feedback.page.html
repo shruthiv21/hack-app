@@ -12,6 +12,11 @@
 
 <ion-content [fullscreen]="true" padding>
 
+  <ion-text>
+    <p class="date">Date: {{ today | date: 'dd/mm/yy' }}</p>
+    <p class="time">Time: {{ today | date: 'HH:mm' }}</p>
+  </ion-text>
+
   <ion-text color="primary" class="ion-text-center">
     <p>Your opinion is important to us. This way we can improve our app</p>
   </ion-text>

@@ -21,10 +21,22 @@ ion-content {
   }
 
   ion-text {
-    p {
+    p.description {
       margin-left: 15px;
       font-weight: 700;
       font-size: 20px;
+      position: relative;
+      top: 60px;
+    }
+    p.date, p.time {
+      font-size: 16px;
+      color: black;
+      position: relative;
+      left: 260px;
+      bottom: 40px;
+    }
+    p.time {
+      bottom: 50px;
     }
   }
 }

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackPage implements OnInit {
 
+  public today = new Date();
+
   constructor() { }
 
   ngOnInit() {
