@@ -116,6 +116,14 @@ export class DashboardPage implements OnInit {
     this.router.navigate(['/feedback']);
   }
 
+  public help() {
+    this.router.navigate(['/help']);
+  }
+
+  public settings() {
+    this.router.navigate(['/settings']);
+  }
+
   public signOut() {
     this.router.navigate(['/home']);
   }

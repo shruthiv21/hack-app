@@ -2,6 +2,7 @@ import { Component, NgZone, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { SMS } from '@ionic-native/sms/ngx';
 
 declare var google;
 
@@ -35,7 +36,8 @@ export class SchedulePage {
     private ngZone: NgZone,
     private geolocation: Geolocation,
     public platform: Platform,
-    public router: Router) {
+    public router: Router,
+    private sms: SMS) {
       this.platform.ready().then(() => {
         this.loadMap();
       });
@@ -96,6 +98,23 @@ export class SchedulePage {
 
   public onSubmit(form) {
     console.log(form);
+    if (this.platform.is('cordova')) {
+      const options = {
+        replaceLineBreaks: true,
+        android: {
+          intent: 'INTENT'
+        }
+      };
+      this.sms.send('9916874417', 'Hello world!', options).then(() => {
+        console.log('Working');
+        alert('SMS sent');
+      }, (err) => {
+        console.log(err);
+      });
+    } else {
+      console.log('Not working');
+      this.router.navigate(['/tabs/dashboard']);
+    }
   }
 
   public cancel() {

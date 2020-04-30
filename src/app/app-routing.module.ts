@@ -27,6 +27,14 @@ const routes: Routes = [
   {
     path: 'self-health-check',
     loadChildren: () => import('./self-health-check/self-health-check.module').then( m => m.SelfHealthCheckPageModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 
