@@ -1,8 +1,9 @@
 import { Component, NgZone, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController, ToastController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
 declare var google;
 
@@ -32,12 +33,19 @@ export class SchedulePage {
 
   public today = new Date();
 
+  public imageURI: any;
+
+  public imageFileName: any;
+
   constructor(
     private ngZone: NgZone,
     private geolocation: Geolocation,
     public platform: Platform,
     public router: Router,
-    private sms: SMS) {
+    private sms: SMS,
+    private transfer: FileTransfer,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController) {
       this.platform.ready().then(() => {
         this.loadMap();
       });
@@ -119,5 +127,45 @@ export class SchedulePage {
 
   public cancel() {
     this.router.navigate(['/tabs/dashboard']);
+  }
+
+  public async uploadFile() {
+    const loader = await this.loadingCtrl.create({
+      message: 'Uploading...'
+    });
+    loader.present();
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    const options: FileUploadOptions = {
+      fileKey: 'ionicfile',
+      fileName: 'ionicfile',
+      chunkedMode: false,
+      mimeType: 'image/jpeg',
+      headers: {}
+    };
+
+    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
+      .then((data) => {
+      console.log(data + 'Uploaded Successfully');
+      this.imageFileName = 'http://192.168.0.7:8080/static/images/ionicfile.jpg';
+      loader.dismiss();
+      this.presentToast('Image uploaded successfully');
+    }, (err) => {
+      console.log(err);
+      loader.dismiss();
+      this.presentToast(err);
+    });
+  }
+
+  public async presentToast(msg): Promise<void> {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss();
+
+    await toast.present();
   }
 }

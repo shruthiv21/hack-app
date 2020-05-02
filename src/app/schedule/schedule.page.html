@@ -41,6 +41,15 @@
               <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
             </ion-item>
 
+            <ion-item>
+              <ion-textarea placeholder="Description of your health issue" clearOnEdit="true"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Please upload suitable medical records</ion-label>
+              <button ion-button (click)="uploadFile()">Upload</button>
+            </ion-item>
+
             <div #map id="map"></div>
           </div>
 
