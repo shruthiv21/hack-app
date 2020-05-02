@@ -31,6 +31,8 @@
     </ul>
   </section>
 
+  <p *ngIf="warning" class="warning">No user found with the given Username/Password, please click on the link below to register yourself!</p>
+
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <ion-grid>
       <ion-row class="ion-justify-content-center">

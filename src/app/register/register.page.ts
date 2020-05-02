@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { RegisterService } from './register.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -10,22 +12,39 @@ export class RegisterPage implements OnInit {
 
   public username: string;
 
+  public phone: string;
+
+  public address: string;
+
+  public email: string;
+
+  public password: any;
+
+  public pincode: string;
+
   public today = new Date();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private registerService: RegisterService) { }
 
   ngOnInit() {
   }
 
-  // public onSubmit(form) {
-  //   this.username = form.value.username;
-  //   this.router.navigate(['dashboard', this.username]);
-  // }
-
   public onSubmit(form) {
+    console.log(form);
     this.username = form.value.username;
-    // this.router.navigate(['tabs', this.username]);
-    // this.router.navigate(['/tabs/dashboard']);
+    this.phone = form.value.phone;
+    this.address = form.value.address;
+    this.email = form.value.email;
+    this.password = form.value.password;
+    this.pincode = form.value.pincode;
+    this.registerService
+     .submitRegistrationDetails(this.username, this.phone, this.address, this.email, this.password, this.pincode)
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/tabs/dashboard']);
+      });
   }
 
   public cancel() {
