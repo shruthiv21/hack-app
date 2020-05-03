@@ -24,6 +24,8 @@ export class RegisterPage implements OnInit {
 
   public today = new Date();
 
+  public sub: any;
+
   constructor(
     private router: Router,
     private registerService: RegisterService) { }
@@ -39,6 +41,9 @@ export class RegisterPage implements OnInit {
     this.email = form.value.email;
     this.password = form.value.password;
     this.pincode = form.value.pincode;
+
+    localStorage.setItem('phone', this.phone);
+
     this.registerService
      .submitRegistrationDetails(this.username, this.phone, this.address, this.email, this.password, this.pincode)
       .subscribe((res) => {

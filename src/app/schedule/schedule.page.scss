@@ -25,7 +25,34 @@ ion-content {
     position: relative;
     bottom: 50px;
   }
+
+  ion-label.file,
+  ion-label.appointment {
+    position: relative;
+    top: 50px;
+  }
+
+  ion-label.file {
+    right: 15px;
+  }
+
+  ion-label.appointment {
+    right: 5px;
+  }
+
+  ion-item {
+    input.input-file {
+      position: relative;
+      left: 10px;
+    }
+
+    ion-button.upload-button {
+      position: relative;
+      right: 100px;
+    }
+  }
 }
+
 ion-item {
   margin-top: 50px;
 }

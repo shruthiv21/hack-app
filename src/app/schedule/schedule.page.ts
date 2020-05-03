@@ -1,9 +1,12 @@
-import { Component, NgZone, ElementRef, ViewChild } from '@angular/core';
+import { Component, NgZone, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { Platform, LoadingController, ToastController } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+
+import { ScheduleService } from './schedule.service';
 
 declare var google;
 
@@ -13,7 +16,7 @@ declare var google;
   styleUrls: ['./schedule.page.scss'],
 })
 
-export class SchedulePage {
+export class SchedulePage implements OnInit {
 
   @ViewChild('map', { static: false }) mapElement: ElementRef;
 
@@ -33,9 +36,27 @@ export class SchedulePage {
 
   public today = new Date();
 
-  public imageURI: any;
+  public phone: any;
+
+  public age: any;
+
+  public description: string;
+
+  public doctorsname: string;
+
+  public doctorsphoneno = '9686663880';
+
+  public attachmentUrl: string;
+
+  public appointmentdateandtime: string;
+
+  public imageURI = '../../assets/images/x-ray-image-1.jpg';
 
   public imageFileName: any;
+
+  public currentdate: any;
+
+  public status: any;
 
   constructor(
     private ngZone: NgZone,
@@ -43,13 +64,19 @@ export class SchedulePage {
     public platform: Platform,
     public router: Router,
     private sms: SMS,
-    private transfer: FileTransfer,
+    private datePipe: DatePipe,
     public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    private httpService: HttpClient,
+    private scheduleService: ScheduleService) {
       this.platform.ready().then(() => {
         this.loadMap();
       });
     }
+
+  public ngOnInit() {
+    this.phone = localStorage.getItem('phone');
+  }
 
   public loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
@@ -107,6 +134,18 @@ export class SchedulePage {
   public onSubmit(form) {
     console.log(form);
     if (this.platform.is('cordova')) {
+      this.age = form.value.age;
+      this.description = form.value.description;
+      this.doctorsname = form.value.doctor;
+      this.attachmentUrl = 'https://s3.us-east-2.amazonaws.com/myawsbucketprag';
+      this.appointmentdateandtime = form.value.appointment;
+      this.currentdate = this.datePipe.transform(this.today, 'dd-MM-yyyy');
+      console.log(this.currentdate);
+      this.scheduleService
+      .scheduleAppointment(this.phone, this.age, this.description, this.doctorsname, this.doctorsphoneno, this.attachmentUrl, this.appointmentdateandtime, this.currentdate, this.status)
+        .subscribe();
+      this.router.navigate(['/tabs/dashboard']);
+
       const options = {
         replaceLineBreaks: true,
         android: {
@@ -121,51 +160,25 @@ export class SchedulePage {
       });
     } else {
       console.log('Not working');
-      this.router.navigate(['/tabs/dashboard']);
     }
+  }
+
+  public updateFile(files: any[]) {
+    if (files && files.length > 0) {
+      const file = files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      this.httpService
+      .post(`http://localhost:8080/telemedicine/patientAppointment/uploadAttachment/${this.phone}`, formData).subscribe();
+     }
+  }
+
+  public attachFile(phone, file) {
+    console.log(file);
+    this.scheduleService.uploadAttachment(phone, file).subscribe();
   }
 
   public cancel() {
     this.router.navigate(['/tabs/dashboard']);
-  }
-
-  public async uploadFile() {
-    const loader = await this.loadingCtrl.create({
-      message: 'Uploading...'
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-
-    const options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: 'image/jpeg',
-      headers: {}
-    };
-
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
-      .then((data) => {
-      console.log(data + 'Uploaded Successfully');
-      this.imageFileName = 'http://192.168.0.7:8080/static/images/ionicfile.jpg';
-      loader.dismiss();
-      this.presentToast('Image uploaded successfully');
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      this.presentToast(err);
-    });
-  }
-
-  public async presentToast(msg): Promise<void> {
-    const toast = await this.toastCtrl.create({
-      message: msg,
-      duration: 3000,
-      position: 'bottom'
-    });
-
-    toast.onDidDismiss();
-
-    await toast.present();
   }
 }

@@ -26,45 +26,43 @@
 
             <ion-item>
               <ion-label>Available Doctors</ion-label>
-              <ion-select>
+              <ion-select [(ngModel)]="doctorsname" name="doctor">
                 <ion-select-option class="ion-text-wrap" *ngFor="let doctor of placeList">{{ doctor.name }}</ion-select-option>
               </ion-select>
             </ion-item>
 
             <ion-item>
-              <ion-label>Select your day for an appointment</ion-label>
-              <ion-datetime value="2020-04-22" placeholder="Select your day for an appointment"></ion-datetime>
+              <ion-input name="age" type="number" placeholder="Please enter your age" ngModel required></ion-input>
+            </ion-item>
+
+            <ion-label class="appointment">Select your date and time for appointment</ion-label>
+            <ion-item>
+              <input type="datetime-local" id="appointment" name="appointment" ngModel required>
             </ion-item>
 
             <ion-item>
-              <ion-label>Select your time</ion-label>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+              <ion-input name="description" type="text" placeholder="Description of your health issue" ngModel required></ion-input>
             </ion-item>
 
+            <ion-label class="file">Please upload suitable medical records</ion-label>
             <ion-item>
-              <ion-textarea placeholder="Description of your health issue" clearOnEdit="true"></ion-textarea>
+              <input class="input-file" type="file" id="img" name="img" (change)="updateFile($event.target.files)" ngModel required>
+              <ion-button (click)="attachFile(phone, file)" class="upload-button">
+                <ion-icon name="attach"></ion-icon>
+              </ion-button>
             </ion-item>
-
-            <ion-item>
-              <ion-label>Please upload suitable medical records</ion-label>
-              <button ion-button (click)="uploadFile()">Upload</button>
-            </ion-item>
-
             <div #map id="map"></div>
           </div>
 
           <div class="ion-text-center">
-            <ion-button size="large" type="submit" expand="block">Submit</ion-button>
+            <ion-button size="large" type="submit" [disabled]="!form.valid" expand="block">Submit</ion-button>
           </div>
 
           <div class="ion-text-center">
             <ion-button size="large" type="cancel" (click)="cancel()" expand="block" color="light">Cancel</ion-button>
           </div>
-
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
 </ion-content>
-
-<!-- [disabled]="!form.valid" -->

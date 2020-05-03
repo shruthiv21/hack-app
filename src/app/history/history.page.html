@@ -10,4 +10,15 @@
     <p class="date">Date: {{ today | date: 'dd/mm/yy' }}</p>
     <p class="time">Time: {{ today | date: 'HH:mm' }}</p>
   </ion-text>
+
+  <ion-card *ngFor="let a of appointmentDetails">
+    <ion-card-content>
+      <pre>Date and Time: {{ a.appointmentdateandtime }}</pre>
+      <pre>Doctor's Name: {{ a.doctorsname }}</pre>
+      <pre>Doctor's Phone No: {{ a.doctorsphoneno }}</pre>
+      <pre>Description: {{ a.description }}</pre>
+      <pre>Appointment was taken on: {{ a.currentdate }}</pre>
+      <pre>Status: {{ a.status }}</pre>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
