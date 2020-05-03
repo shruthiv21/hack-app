@@ -134,17 +134,17 @@ export class SchedulePage implements OnInit {
   public onSubmit(form) {
     console.log(form);
     if (this.platform.is('cordova')) {
-      this.age = form.value.age;
-      this.description = form.value.description;
-      this.doctorsname = form.value.doctor;
-      this.attachmentUrl = 'https://s3.us-east-2.amazonaws.com/myawsbucketprag';
-      this.appointmentdateandtime = form.value.appointment;
-      this.currentdate = this.datePipe.transform(this.today, 'dd-MM-yyyy');
-      console.log(this.currentdate);
-      this.scheduleService
-      .scheduleAppointment(this.phone, this.age, this.description, this.doctorsname, this.doctorsphoneno, this.attachmentUrl, this.appointmentdateandtime, this.currentdate, this.status)
-        .subscribe();
-      this.router.navigate(['/tabs/dashboard']);
+      // this.age = form.value.age;
+      // this.description = form.value.description;
+      // this.doctorsname = form.value.doctor;
+      // this.attachmentUrl = 'https://s3.us-east-2.amazonaws.com/myawsbucketprag';
+      // this.appointmentdateandtime = form.value.appointment;
+      // this.currentdate = this.datePipe.transform(this.today, 'dd-MM-yyyy');
+      // console.log(this.currentdate);
+      // this.scheduleService
+      // .scheduleAppointment(this.phone, this.age, this.description, this.doctorsname, this.doctorsphoneno, this.attachmentUrl, this.appointmentdateandtime, this.currentdate, this.status)
+      //   .subscribe();
+      // this.router.navigate(['/tabs/dashboard']);
 
       const options = {
         replaceLineBreaks: true,
@@ -160,6 +160,17 @@ export class SchedulePage implements OnInit {
       });
     } else {
       console.log('Not working');
+      this.age = form.value.age;
+      this.description = form.value.description;
+      this.doctorsname = form.value.doctor;
+      this.attachmentUrl = 'https://s3.us-east-2.amazonaws.com/myawsbucketprag/attachment/9916874417/x-ray-image-1.jpg';
+      this.appointmentdateandtime = form.value.appointment;
+      this.currentdate = this.datePipe.transform(this.today, 'dd-MM-yyyy');
+      console.log(this.currentdate);
+      this.scheduleService
+      .scheduleAppointment(this.phone, this.age, this.description, this.doctorsname, this.doctorsphoneno, this.attachmentUrl, this.appointmentdateandtime, this.currentdate, this.status)
+        .subscribe();
+      this.router.navigate(['/tabs/dashboard']);
     }
   }
 

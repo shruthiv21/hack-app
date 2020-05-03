@@ -39,7 +39,7 @@ export class HistoryPage implements OnInit {
     this.phone = localStorage.getItem('phone');
     console.log(this.phone);
 
-    this.historyService.getAppointmentHistory(this.phone)
+    this.historyService.getAppointmentHistory('9916874417')
       .subscribe((res) => {
         Object.values(res).forEach((r) => {
           this.appointmentDetails.push(r);
